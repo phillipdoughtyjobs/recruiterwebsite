@@ -1,0 +1,347 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Phillip Doughty</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout concept: a book-of-business ledger. Left-aligned hero beside a four-line portfolio ledger; experience as ledger rows; metrics read like renewal entries. */
+  :root{
+    --bg:#F3F5F2;
+    --surface:#FFFFFF;
+    --ink:#101A18;
+    --muted:#4F5F5A;
+    --line:#D5DCD7;
+    --accent:#2740C8;
+    --accent-ink:#FFFFFF;
+    --soft:#E6EBFA;
+    --font-display:'Familjen Grotesk','Helvetica Neue',Arial,sans-serif;
+    --font-body:'Public Sans','Helvetica Neue',Arial,sans-serif;
+    --font-mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E1413;--surface:#151D1B;--ink:#E8EEEB;--muted:#A3B2AC;--line:#27332F;
+      --accent:#9DB0FF;--accent-ink:#0E1413;--soft:#1C2542;color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1413;--surface:#151D1B;--ink:#E8EEEB;--muted:#A3B2AC;--line:#27332F;
+    --accent:#9DB0FF;--accent-ink:#0E1413;--soft:#1C2542;color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:16px;line-height:1.6;
+    padding-left:max(16px,env(safe-area-inset-left,0px));
+    padding-right:max(16px,env(safe-area-inset-right,0px));
+    padding-block:0;
+  }
+  .wrap{max-width:1040px;margin:0 auto}
+  a{color:var(--accent)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:3px}
+  h1,h2,h3{font-family:var(--font-display);text-wrap:balance;margin:0}
+  .mono{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .skip{position:absolute;left:-999px}
+  .skip:focus{left:16px;top:8px;background:var(--surface);padding:8px 12px;z-index:20}
+
+  header.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:20px;border-bottom:1px solid var(--line)}
+  header.top .brand{font-family:var(--font-display);font-weight:700;font-size:18px}
+  header.top nav{display:flex;gap:20px;flex-wrap:wrap}
+  header.top nav a{color:var(--ink);text-decoration:none;font-size:14px;font-weight:500}
+  header.top nav a:hover{color:var(--accent)}
+
+  .hero{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:48px;padding-block:64px 56px;align-items:start}
+  .hero h1{font-size:clamp(44px,8vw,84px);line-height:.98;font-weight:700;letter-spacing:-.02em}
+  .hero .role{margin:20px 0 0;font-family:var(--font-display);font-size:clamp(19px,2.4vw,24px);font-weight:500;line-height:1.3}
+  .hero .value{margin:16px 0 0;max-width:52ch;color:var(--muted);font-size:17px}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .btn{display:inline-block;font-family:var(--font-body);font-weight:600;font-size:15px;padding:12px 20px;border-radius:6px;text-decoration:none;border:1.5px solid var(--accent);cursor:pointer}
+  .btn.primary{background:var(--accent);color:var(--accent-ink)}
+  .btn.ghost{background:transparent;color:var(--accent)}
+  .btn:hover{filter:brightness(1.08)}
+
+  .ledger{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 22px 14px}
+  .ledger .cap{display:block;padding-block:14px 8px;border-bottom:1px solid var(--ink)}
+  .ledger dl{margin:0}
+  .ledger .row{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:baseline;padding-block:14px;border-bottom:1px dashed var(--line)}
+  .ledger .row:last-child{border-bottom:none}
+  .ledger dt{font-size:14px;color:var(--muted)}
+  .ledger dd{margin:0;font-family:var(--font-display);font-weight:700;font-size:30px;line-height:1;font-variant-numeric:tabular-nums;text-align:right}
+
+  section{padding-block:56px;border-top:1px solid var(--line)}
+  section > .wrap > h2,section h2.sec{font-size:clamp(28px,4vw,40px);line-height:1.1;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+  .lede{color:var(--muted);max-width:60ch;margin:0 0 32px}
+
+  .results{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+  .result{padding:22px;background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:0}
+  .result .n{font-family:var(--font-display);font-weight:700;font-size:44px;line-height:1;font-variant-numeric:tabular-nums;color:var(--accent)}
+  .result h3{font-size:17px;margin:12px 0 6px;font-weight:600}
+  .result p{margin:0;font-size:14.5px;color:var(--muted)}
+
+  .job{display:grid;grid-template-columns:minmax(0,230px) minmax(0,1fr);gap:32px;padding-block:28px;border-top:1px dashed var(--line)}
+  .job:first-of-type{border-top:none}
+  .job .meta h3{font-size:22px;font-weight:600}
+  .job .meta .dates{font-family:var(--font-mono);font-size:12px;color:var(--muted);margin-top:6px;letter-spacing:.04em}
+  .job .meta .where{font-size:14px;color:var(--muted);margin-top:2px}
+  .job .title{font-weight:600;margin:0 0 10px}
+  .job ul{margin:0;padding-left:20px}
+  .job li{margin-bottom:8px;max-width:66ch}
+  .job li::marker{color:var(--accent)}
+  .earlier{margin-top:8px;color:var(--muted);font-size:15px;max-width:70ch}
+
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+  .skill-group{min-width:0}
+  .skill-group h3{font-size:18px;font-weight:600;margin-bottom:12px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+  .chips li{background:var(--soft);color:var(--ink);padding:5px 11px;border-radius:5px;font-size:14px}
+
+  .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+  figure{margin:0;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:22px;min-width:0;display:flex;flex-direction:column;gap:14px}
+  figure blockquote{margin:0;font-size:15.5px}
+  figcaption{font-size:14px;color:var(--muted);margin-top:auto}
+  figcaption strong{color:var(--ink);display:block}
+
+  .contact{background:var(--ink);color:var(--bg);border-radius:12px;padding:44px clamp(22px,5vw,56px);margin-block:8px 64px}
+  .contact h2{font-size:clamp(28px,4vw,42px);margin-bottom:12px;color:var(--bg)}
+  .contact p{max-width:54ch;margin:0 0 24px;opacity:.85}
+  .contact .btn.primary{background:var(--bg);color:var(--ink);border-color:var(--bg)}
+  .contact .btn.ghost{color:var(--bg);border-color:var(--bg)}
+  .email-line{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:20px;font-family:var(--font-mono);font-size:14px}
+  .email-line span{overflow-wrap:anywhere}
+  .email-line button{font-family:var(--font-body);font-size:13px;font-weight:600;background:transparent;color:var(--bg);border:1.5px solid var(--bg);border-radius:5px;padding:5px 12px;cursor:pointer}
+  #copy-status{font-family:var(--font-body);font-size:13px;opacity:.85}
+
+  footer{padding-block:0 40px;color:var(--muted);font-size:13px}
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:minmax(0,1fr);gap:36px;padding-block:44px 40px}
+    .job{grid-template-columns:minmax(0,1fr);gap:12px}
+  }
+  @media (max-width:520px){
+    header.top{flex-direction:column;align-items:flex-start;gap:8px}
+    .ledger dd{font-size:26px}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="wrap">
+  <header class="top">
+    <span class="brand">Phillip Doughty</span>
+    <nav aria-label="Primary">
+      <a href="#results">Results</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="hero">
+      <div>
+        <p class="mono" style="margin:0 0 16px">Customer Success &middot; Florida, remote across the US</p>
+        <h1>Phillip Doughty</h1>
+        <p class="role">Senior Enterprise Customer Success Manager</p>
+        <p class="value">I protect and grow large SaaS accounts: renewals, expansion, and adoption, with executive relationships and AI-built tooling behind them.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#contact">Get in touch</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/phillipdoughty/" target="_blank" rel="noopener">LinkedIn profile</a>
+        </div>
+      </div>
+
+      <aside class="ledger" aria-label="Portfolio at a glance">
+        <span class="cap mono">Book of business</span>
+        <dl>
+          <div class="row"><dt>ARR managed</dt><dd>$5M+</dd></div>
+          <div class="row"><dt>Global enterprise accounts</dt><dd>40&ndash;50</dd></div>
+          <div class="row"><dt>Renewal rate (UserTesting)</dt><dd>95%+</dd></div>
+          <div class="row"><dt>Account saved from churn</dt><dd>$350K</dd></div>
+        </dl>
+      </aside>
+    </div>
+
+    <section id="results" aria-labelledby="results-h">
+      <div class="wrap">
+        <h2 id="results-h">Results</h2>
+        <p class="lede">Five-plus years in enterprise customer success, after nearly 20 years in sales and customer-facing roles.</p>
+        <div class="results">
+          <div class="result">
+            <div class="n">95%+</div>
+            <h3>Renewal rate</h3>
+            <p>Held across a $5M ARR portfolio of 40+ global enterprise accounts at UserTesting.</p>
+          </div>
+          <div class="result">
+            <div class="n">$350K</div>
+            <h3>ARR retained</h3>
+            <p>Took an at-risk account through a save motion at Pluralsight, with 28 days on the renewal clock.</p>
+          </div>
+          <div class="result">
+            <div class="n">30&ndash;40%+</div>
+            <h3>Adoption growth</h3>
+            <p>More licensed users, more time in platform, and broader use of features across the Pluralsight portfolio.</p>
+          </div>
+          <div class="result">
+            <div class="n">75%</div>
+            <h3>CSM adoption of &ldquo;Buddy&rdquo;</h3>
+            <p>A custom AI assistant I built cut account research from 24&ndash;48 hours to 1&ndash;2 hours.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" aria-labelledby="exp-h">
+      <div class="wrap">
+        <h2 id="exp-h">Experience</h2>
+        <p class="lede">Customer success roles at two SaaS companies, plus enterprise sales and enablement before that.</p>
+
+        <article class="job">
+          <div class="meta">
+            <h3>Pluralsight</h3>
+            <div class="dates">JAN 2026 &ndash; AUG 2026</div>
+            <div class="where">Remote, Florida</div>
+          </div>
+          <div>
+            <p class="title">Senior Enterprise Customer Success Manager</p>
+            <ul>
+              <li>Owned a $5&ndash;6M ARR book of 40&ndash;50 enterprise accounts within the first months on the team.</li>
+              <li>Retained a $350K ARR account at risk of churn within six months through relationship management and value realignment.</li>
+              <li>Reached 90% of quota and was on pace for President&rsquo;s Club when the role was eliminated in a company-wide restructuring.</li>
+              <li>Selected as an AI Champion through the AI Academy. Built a Gemini Gem CSM assistant and co-built SAM (Strategic Account Map) to produce client dossiers and QBR decks in minutes.</li>
+              <li>Led AI enablement for the Enterprise, Strategic, and Scaled CS teams, 60&ndash;80 CSMs.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="meta">
+            <h3>UserTesting</h3>
+            <div class="dates">MAY 2021 &ndash; JAN 2026</div>
+            <div class="where">Remote, Florida</div>
+          </div>
+          <div>
+            <p class="title">Senior Enterprise CSM (2025) &middot; Enterprise CSM (2021&ndash;2025)</p>
+            <ul>
+              <li>Managed a $5M ARR portfolio across 40+ global enterprise accounts and kept renewals above 95%.</li>
+              <li>Contributed $150&ndash;250K in annual expansion revenue and $250&ndash;500K in annual pipeline.</li>
+              <li>Built &ldquo;Buddy,&rdquo; a custom GPT assistant for account planning, research, data analysis, and QBR creation. Productivity rose 50%+.</li>
+              <li>Cut onboarding time by 30% with enablement frameworks, and trained about 70 CSMs on value storytelling, save motions, executive business reviews, and AI workflows.</li>
+              <li>Ranked in the top 10% of enterprise CSMs and partnered with Product, UX, and Engineering on FigJam integration workflows.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="job">
+          <div class="meta">
+            <h3>Earlier career</h3>
+            <div class="dates">2005 &ndash; 2020</div>
+            <div class="where">Sales and enablement</div>
+          </div>
+          <div>
+            <p class="title">Enterprise sales, business development, and enablement</p>
+            <ul>
+              <li>ADP, Major Accounts Sales District Manager: enterprise HCM sales cycles with executives and HR leadership.</li>
+              <li>Gartner, Business Development Manager: consultative, ROI-led sales to CIOs and senior technology leaders.</li>
+              <li>Global Electronic Services, Sales Enablement &amp; Quality Manager: grew monthly revenue from $750K to $1.5M leading a team of 20+.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" aria-labelledby="skills-h">
+      <div class="wrap">
+        <h2 id="skills-h">Skills</h2>
+        <p class="lede">The work, the methods behind it, and the tools I use.</p>
+        <div class="skills">
+          <div class="skill-group">
+            <h3>Customer success</h3>
+            <ul class="chips">
+              <li>Renewals &amp; retention</li><li>Expansion &amp; upsell</li><li>Churn risk &amp; save motions</li><li>Success planning</li><li>QBR / EBR execution</li><li>Adoption &amp; onboarding</li><li>Health scoring</li><li>Executive engagement</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>AI and enablement</h3>
+            <ul class="chips">
+              <li>Custom GPTs</li><li>Gemini Gems</li><li>Claude Projects</li><li>Microsoft Copilot</li><li>Prompt engineering</li><li>CSM team training</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Platforms and methods</h3>
+            <ul class="chips">
+              <li>Gainsight</li><li>Salesforce</li><li>Planhat</li><li>Totango</li><li>Tableau</li><li>Domo</li><li>Challenger Sales</li><li>Value Selling</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="recommendations" aria-labelledby="rec-h">
+      <div class="wrap">
+        <h2 id="rec-h">What colleagues and clients say</h2>
+        <p class="lede">Excerpts from LinkedIn recommendations.</p>
+        <div class="quotes">
+          <figure>
+            <blockquote>&ldquo;In under a year, Phillip rebuilt customer relationships from scratch, ran executive-level business reviews, and drove real outcomes.&rdquo;</blockquote>
+            <figcaption><strong>Michael Rausch</strong>Director, Enterprise CS, Pluralsight. Managed Phillip directly.</figcaption>
+          </figure>
+          <figure>
+            <blockquote>&ldquo;When a major account landed on the at-risk list, Phil ran the entire save motion himself.&rdquo;</blockquote>
+            <figcaption><strong>Andrew Velker</strong>Sales Director, Pluralsight.</figcaption>
+          </figure>
+          <figure>
+            <blockquote>&ldquo;Phillip kept us equipped with the right tools, training, and features, making it easy to keep getting value out of the platform.&rdquo;</blockquote>
+            <figcaption><strong>Miguel Vazquez</strong>Lead Product Designer. Phillip&rsquo;s client.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-h" style="border-top:none;padding-block:24px 0">
+      <div class="wrap">
+        <div class="contact">
+          <h2 id="contact-h">Open to Customer Success, Revenue Enablement, and AI Enablement roles</h2>
+          <p>If you are hiring for strategic or enterprise customer success, I would like to hear about the role. The fastest way to reach me is LinkedIn or email.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="https://www.linkedin.com/in/phillipdoughty/" target="_blank" rel="noopener">Message on LinkedIn</a>
+            <a class="btn ghost" href="mailto:phillip.doughty.jobs@gmail.com">Email Phillip</a>
+          </div>
+          <div class="email-line">
+            <span id="email-text">phillip.doughty.jobs@gmail.com</span>
+            <button type="button" id="copy-btn">Copy address</button>
+            <span id="copy-status" role="status" aria-live="polite"></span>
+          </div>
+          <div class="email-line">
+            <span>Phone: 352-399-8788</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Phillip Doughty &middot; Florida, remote across the US</footer>
+</div>
+
+<script>
+  (function(){
+    var btn=document.getElementById('copy-btn');
+    var status=document.getElementById('copy-status');
+    var text=document.getElementById('email-text');
+    function fallback(){
+      try{
+        var r=document.createRange();r.selectNodeContents(text);
+        var s=window.getSelection();s.removeAllRanges();s.addRange(r);
+        status.textContent='Address selected. Copy it with your keyboard.';
+      }catch(e){status.textContent='Select the address and copy it.';}
+    }
+    btn.addEventListener('click',function(){
+      var v=text.textContent.trim();
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(v).then(function(){status.textContent='Copied.';},fallback);
+      }else{fallback();}
+    });
+  })();
+</script>
+
+</body></html>
